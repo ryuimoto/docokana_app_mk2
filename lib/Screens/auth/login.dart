@@ -75,18 +75,44 @@ class Login extends StatelessWidget {
                 ],
               ),
               Column(children: <Widget>[
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .2,
-                ),
-                Container(
-                  child: Text(
-                    """By tapping "Log in", you agree with our
-Terms.Learn how we process your data in
-our Privacy Policy and Cookies Policy.""",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black54, fontSize: 15),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Container(
+                    child: TextFormField(
+                      style: TextStyle(fontSize: 23),
+                      decoration: InputDecoration(
+                        hintText: "username",
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: primaryColor)),
+                        helperText: "This is how it will appear in App.",
+                        helperStyle:
+                        TextStyle(color: secondryColor, fontSize: 15),
+                      ),
+                      onChanged: (value) {
+                      },
+                    ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Container(
+                    child: TextFormField(
+                      style: TextStyle(fontSize: 23),
+                      decoration: InputDecoration(
+                        hintText: "password",
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: primaryColor)),
+                        helperText: "This is how it will appear in App.",
+                        helperStyle:
+                        TextStyle(color: secondryColor, fontSize: 15),
+                      ),
+                      onChanged: (value) {
+                      },
+                    ),
+                  ),
+                ),
+
                 Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
                   child: Material(
@@ -112,7 +138,7 @@ our Privacy Policy and Cookies Policy.""",
                             width: MediaQuery.of(context).size.width * .8,
                             child: Center(
                                 child: Text(
-                              "LOG IN WITH FACEBOOK",
+                              "LOG IN",
                               style: TextStyle(
                                   color: textColor,
                                   fontWeight: FontWeight.bold),
@@ -126,25 +152,6 @@ our Privacy Policy and Cookies Policy.""",
                       ),
                     ),
                   ),
-                ),
-                OutlineButton(
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * .065,
-                    width: MediaQuery.of(context).size.width * .75,
-                    child: Center(
-                        child: Text("LOG IN WITH PHONE NUMBER",
-                            style: TextStyle(
-                                color: primaryColor,
-                                fontWeight: FontWeight.bold))),
-                  ),
-                  borderSide: BorderSide(
-                      width: 1, style: BorderStyle.solid, color: primaryColor),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25)),
-                  onPressed: () {
-                    Navigator.push(context,
-                        CupertinoPageRoute(builder: (context) => OTP()));
-                  },
                 ),
               ]),
               Padding(
