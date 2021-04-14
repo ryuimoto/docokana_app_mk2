@@ -6,6 +6,10 @@ import 'package:docokana_new_app_mk2/Screens/Profile/EditProfile.dart';
 import 'package:docokana_new_app_mk2/Screens/Profile/settings.dart';
 import 'package:docokana_new_app_mk2/models/data_model.dart';
 import 'package:docokana_new_app_mk2/util/color.dart';
+import 'package:docokana_new_app_mk2/api/url.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:io';
 
 List adds = [
   {
@@ -40,7 +44,33 @@ List adds = [
   }
 ];
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget{
+  @override
+  _ProfileState createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  static Map<String, dynamic> user = Map();
+
+  @override
+  void initState(){
+    super.initState();
+    getUser();
+  }
+
+  Future getUser() async {
+    var url = Url().url + "get_user";
+    var response = await http.get(url);
+    if(response.statusCode == 200){
+      var jsonData = json.decode(response.body);
+
+      setState(() {
+        user = jsonData;
+      });
+      return jsonData;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +79,8 @@ class Profile extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(50), topRight: Radius.circular(50)),
+                topLeft: Radius.circular(50),
+                topRight: Radius.circular(50)),
             color: Colors.white),
         child: SingleChildScrollView(
           child: Column(children: <Widget>[
@@ -72,14 +103,14 @@ class Profile extends StatelessWidget {
               ),
             ),
             Text(
-              "${currentUser.name}, ${currentUser.age}",
+              "${user['name']}",
               style: TextStyle(
                   color: Colors.black87,
                   fontWeight: FontWeight.w500,
                   fontSize: 30),
             ),
             Text(
-              "University of New York",
+              "${user['email']}",
               style: TextStyle(
                   color: Colors.black54,
                   fontWeight: FontWeight.w400,
