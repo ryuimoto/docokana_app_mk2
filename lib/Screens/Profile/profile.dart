@@ -228,72 +228,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)),
-                        height: 100,
-                        width: MediaQuery.of(context).size.width * .85,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Swiper(
-                            key: UniqueKey(),
-                            curve: Curves.linear,
-                            autoplay: true,
-                            physics: ScrollPhysics(),
-                            itemBuilder: (BuildContext context, int index2) {
-                              return Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        Icon(
-                                          adds[index2]["icon"],
-                                          color: adds[index2]["color"],
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          adds[index2]["title"],
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      adds[index2]["subtitle"],
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ]);
-                            },
-                            itemCount: adds.length,
-                            pagination: new SwiperPagination(
-                                alignment: Alignment.bottomCenter,
-                                builder: DotSwiperPaginationBuilder(
-                                    activeSize: 10,
-                                    color: secondryColor,
-                                    activeColor: primaryColor)),
-                            control: new SwiperControl(
-                              size: 20,
-                              color: primaryColor,
-                              disableColor: secondryColor,
-                            ),
-                            loop: false,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
+
                 ],
               ),
             ),
